@@ -1,6 +1,5 @@
 # E-commerce_log_offline_analysis_system
 ![image](images/1751104939283.jpg)
-###  测试服务器规划
 ### 技术框架
 
 | 产品       | 版本号    |
