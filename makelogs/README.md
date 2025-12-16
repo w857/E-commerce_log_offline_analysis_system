@@ -5,7 +5,7 @@
 
 2.选择maven webapp项目
 
-![image](..\images\ee253f4a-f5e6-4ebe-a516-122c6f6e60ca.png)
+![image](../images/ee253f4a-f5e6-4ebe-a516-122c6f6e60ca.png)
 
 3.填写项目有关信息
 
@@ -74,3 +74,4 @@
 6.启动项目，测试http://localhost:8080/
 
 ![image](..\images\Snipaste_2025-12-16_11-28-44.png)
+
