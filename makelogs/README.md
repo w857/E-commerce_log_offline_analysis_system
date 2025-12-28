@@ -71,8 +71,28 @@
 
 点击apply，然后点击OK
 
-6.启动项目，测试http://localhost:8080/
+6.启动项目，测试 http://localhost:8080/ 
 
 ![image](../images/Snipaste_2025-12-16_11-28-44.png)
 
+7.访问 http://localhost:8080/demo.jsp见到以下页面
 
+![image](../images/Snipaste_2025-12-16_17-51-26.png)
+
+8.打开虚拟机中的Nginx，并查看日志
+
+#实时输出访问日志新增内容
+
+tail -f /usr/local/nginx/logs/access.log
+
+![image](../images/Snipaste_2025-12-16_17-54-10.png)
+
+9.测试订单支付成功方法
+
+运行下列方法
+
+![image](../images/Snipaste_2025-12-28_10-34-46.png)
+
+运行后检查Nginx服务器，看是否产生相关日志
+
+![image](../images/Snipaste_2025-12-28_10-38-24.png)

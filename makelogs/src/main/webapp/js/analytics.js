@@ -1,3 +1,37 @@
+// 代码解析
+// 	常规写法：
+// 	//定义js函数
+// 	function Load(){
+// 		alert("hello js");
+// 	}
+// 	//调用js
+// 	load()
+//
+// 	//过渡方式
+// 	(function Load2(){
+// 		alert("hello js load2");
+// 	})()
+//
+// 用于load2没有在其他地方调用，可以省略函数名，总体结构为()()，第一个括号用来定义函数，第二个括号表示调用该函数
+// 	(function (){
+// 		alert("hello js load3");
+// 	})()
+
+// (function () {
+// 	var myJson={
+// 		name = "张三",
+// 		age = "35",
+// 		say:function () {
+// 			alert("我是"+this.name+",近年"+this.age+"岁！");
+// 		}
+// 	};
+// 	//调用myJSON属性
+// 	alert(myJson.name+"==="+myJson.age);
+// 	//调用myJSON方法
+// 	myJson.say();
+//
+// })()
+
 (function() {
 	var CookieUtil = {
 		// get the cookie of the key is name
@@ -255,7 +289,11 @@
 			}
 			return true;
 		},
-
+		//前端经典的通过image对象发起get请求向服务器上报数据的实现（也叫「像素点埋点」/「信标上报」），
+		//核心利用 Image 加载图片的特性，无需等待响应即可完成数据上报，且跨域兼容性好。
+		//方案适用于前端埋点（上报用户行为、页面 PV/UV）；
+		// 日志上报（无需等待响应，不影响用户体验）；
+		// 简单数据统计（如按钮点击、页面停留时间）。
 		sendDataToServer : function(data) {
 			// 发送数据data到服务器，其中data是一个字符串
 			var that = this;
@@ -310,12 +348,12 @@
 			var params = "";
 			for ( var e in data) {
 				if (e && data[e]) {
-					params += encodeURIComponent(e) + "="
+					params += encodeURIComponent(e) + "=" //encodeURIComponent() 是 JavaScript 中用于编码 URI 组件的核心函数，能将特殊字符（如 &、=、/、空格 等）转换为符合 URI 规范的百分号编码格式，避免 URI 解析错误，是前端处理 URL 参数、拼接请求地址的高频工具。
 							+ encodeURIComponent(data[e]) + "&";
 				}
 			}
 			if (params) {
-				return params.substring(0, params.length - 1);
+				return params.substring(0, params.length - 1);//去掉最后的字符&
 			} else {
 				return params;
 			}

@@ -25,17 +25,21 @@ public class SendDataMonitor {
 	private static SendDataMonitor monitor = null;
 
 	private SendDataMonitor() {
-		// 私有构造方法，进行单列模式的创建
+		// 私有构造方法，进行单列模式的创建   单例模式是一种设计模式，核心目标是：保证一个类在整个应用程序中，始终只有「一个实例对象」，并且提供一个全局访问点来获取这个唯一实例。
+		//常见场景：配置管理器、数据库连接池、日志工具类等（这类工具无需多个实例，单例可节省资源、保证数据一致性）。
 	}
 
 	/**
 	 * 获取单列的monitor对象实例
-	 * 
+	 * 双重检查锁（DCL）懒汉式单例
 	 * @return
 	 */
 	public static SendDataMonitor getSendDataMonitor() {
+		//当实例已创建时，直接返回实例，无需进入同步代码块（避免频繁加锁解锁，提升高性能）
 		if (monitor == null) {
+			//类级别的全局锁，保证多线程环境下，只有一个线程能进入后续的实例创建逻辑
 			synchronized (SendDataMonitor.class) {
+				//解决「多个线程同时通过第一层检查，等待锁释放后重复创建实例」的问题（核心防重复逻辑）
 				if (monitor == null) {
 					monitor = new SendDataMonitor();
 
@@ -73,13 +77,14 @@ public class SendDataMonitor {
 	private void run() {
 		while (true) {
 			try {
+				//从阻塞队列queue对象中获取发送的URL地址，获取到URL则执行后续的代码直接发送到Nginx服务器，如果获取不到url则产生阻塞
 				String url = this.queue.take();
 				System.out.println(url);
 				// 正式的发送url
 				HttpRequestUtil.sendData(url);
 			} catch (Throwable e) {
 				log.log(Level.WARNING, "发送url异常", e);
-			}
+			} 
 		}
 	}
 

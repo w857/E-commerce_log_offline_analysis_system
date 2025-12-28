@@ -10,7 +10,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		AnalyticsEngineSDK.onChargeSuccess("orderid123", "zhangsan");
-		AnalyticsEngineSDK.onChargeRefund("orderid456", "lisi");
+		//AnalyticsEngineSDK.onChargeRefund("orderid456", "lisi");
 
 		/*try {
 			String d = day

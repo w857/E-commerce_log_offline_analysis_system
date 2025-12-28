@@ -98,8 +98,8 @@ public class AnalyticsEngineSDK {
 	/**
 	 * 根据传入的参数构建url
 	 * 
-	 * @param data
-	 * @return
+	 * @param data 封装了所有参数的map集合对象
+	 * @return	将参数的map对象转化为一个字符串 http：//node1/log.gif?k1=v1&k2=v2&...
 	 * @throws UnsupportedEncodingException
 	 */
 	private static String buildUrl(Map<String, String> data)
